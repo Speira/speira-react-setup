@@ -13,8 +13,7 @@ type ImageProps = DefaultProps & {
 
 /**
  * BaseImage
- * @component
- *
+ * @styled-component
  */
 const BaseImage = styled.img`
   height: ${({ height }) => height};
@@ -29,7 +28,6 @@ const BaseImage = styled.img`
 /**
  * Image
  * @component
- *
  */
 function Image(props: ImageProps) {
   const { className, rounded = false, height = "auto", width = "auto" } = props;

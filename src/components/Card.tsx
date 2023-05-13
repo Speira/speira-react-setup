@@ -5,7 +5,7 @@ import { DefaultProps } from "~utils/types";
 
 /**
  * StyledCard
- * @component
+ * @styled-component
  */
 const StyledCard = styled.div`
   align-items: center;
@@ -20,7 +20,6 @@ const StyledCard = styled.div`
 /**
  * Card
  * @component
- *
  */
 function Card(props: DefaultProps) {
   const { children, className } = props;

@@ -8,9 +8,9 @@ type IconProps = {
 /**
  * Icon
  * @component
+ * @styled-icons
  * @description
  * Calling Icon from "@styled-icons/material-rounded" library
- *
  */
 function Icon(props: IconProps) {
   const { name, size = "1em" } = props;

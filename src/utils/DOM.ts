@@ -1,14 +1,13 @@
-import { css } from "styled-components";
+import { RefObject } from "react";
 
-import { STATUS } from "./enums";
+import { checkIsKeyof } from "./objects";
+
+// ******************************************************************
 
 /**
- * enClassname()
- *
+ * enClassname
  * @description
  * Adapt props to be placed in the className of an Component
- *
- *
  */
 export function enClassname(props: string[], className?: string) {
   const base = className || "";
@@ -20,12 +19,26 @@ export function enClassname(props: string[], className?: string) {
 
 // ******************************************************************
 
-export function getStatusStyle(status: STATUS) {
-  return {
-    background: css`
-      --bg-color: var(--color-info);
-      --bg-text-color: var(--color-light);
-      background-color: var(--color-info);
-    `,
-  };
+/**
+ * checkIsRef
+ * @description
+ * Check if it is a ref
+ */
+export function checkIsRef(
+  ref: HTMLElement | RefObject<HTMLElement>
+): ref is RefObject<HTMLElement> {
+  return "current" in ref;
+}
+
+// ******************************************************************
+
+export function displayValue(item: object, key: string) {
+  if (checkIsKeyof(item, key)) {
+    const value = item[key];
+    if (["string", "number"].includes(typeof value)) {
+      return value;
+    }
+    if (typeof value === "boolean") return value ? "1" : "0";
+  }
+  return "";
 }

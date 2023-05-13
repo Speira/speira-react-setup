@@ -1,6 +1,29 @@
-import { DefaultTheme } from "styled-components";
-
 import { checkIsKeyof } from "./objects";
+
+export interface ThemeInterface {
+  colors: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    quaternary: string;
+    light: string;
+    dark: string;
+    info: string;
+    success: string;
+    warning: string;
+    danger: string;
+    light_info: string;
+    light_warning: string;
+    light_success: string;
+    light_danger: string;
+  };
+  radius: string;
+
+  boxShadowize: {
+    low: (color: string) => string;
+    hight: (color: string) => string;
+  };
+}
 
 /**
  * getDefaultTheme
@@ -8,7 +31,7 @@ import { checkIsKeyof } from "./objects";
  * The default style theme, implement DefaultTheme
  * @see src/styled.d.ts for the interface definition
  */
-function getDefaultTheme(): DefaultTheme {
+function getDefaultTheme(): ThemeInterface {
   return {
     colors: {
       primary: "#174f69",
@@ -34,7 +57,7 @@ function getDefaultTheme(): DefaultTheme {
   };
 }
 
-enum ThemeKeys {
+export enum ThemeKeys {
   defaultTheme = "defaultTheme",
 }
 
@@ -44,7 +67,7 @@ enum ThemeKeys {
  * Init the theme
  *
  */
-export function initTheme(nextKey?: ThemeKeys): DefaultTheme {
+export function initTheme(nextKey?: ThemeKeys): ThemeInterface {
   const themeStorageID = "themeStorageID";
   const themes = {
     [ThemeKeys.defaultTheme]: getDefaultTheme,

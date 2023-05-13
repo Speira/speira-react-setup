@@ -2,16 +2,17 @@ import React from "react";
 import { styled } from "styled-components";
 
 import useEnsafe from "~hooks/useEnsafe";
+import { Status } from "~utils/enums";
 import { DefaultProps } from "~utils/types";
 
 type ButtonProps = DefaultProps & {
   onClick: () => void;
+  status?: Status;
 };
 
 /**
  * StyledButton
- * @component
- *
+ * @styled-component
  */
 const StyledButton = styled.button`
   border: none;

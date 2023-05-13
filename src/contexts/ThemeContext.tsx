@@ -1,8 +1,8 @@
 import React from "react";
 import {
   DefaultTheme,
-  ThemeContext as StyledThemeContext,
-  ThemeProvider as StyledThemeProvider,
+  ThemeContext as SCThemeContext,
+  ThemeProvider as SCThemeProvider,
 } from "styled-components";
 
 import { initTheme } from "~utils/themes";
@@ -38,13 +38,13 @@ function ThemeProvider(props: DefaultProps) {
     }),
     [theme]
   );
-  return <StyledThemeProvider theme={value}>{children}</StyledThemeProvider>;
+  return <SCThemeProvider theme={value}>{children}</SCThemeProvider>;
 }
 
 export default ThemeProvider;
 
 export const useTheme = () => {
-  const context = React.useContext(StyledThemeContext);
+  const context = React.useContext(SCThemeContext);
   if (!context) throw new Error("ThemeContext must be called in ThemeProvider");
   return context;
 };

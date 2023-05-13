@@ -26,3 +26,9 @@ declare module "styled-components" {
     };
   }
 }
+
+declare module "react" {
+  interface DomAttributes<T> {
+    css?: CSSProp;
+  }
+}

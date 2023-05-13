@@ -1,27 +1,26 @@
-import React from "react";
+import React, { HTMLInputTypeAttribute } from "react";
 import { styled } from "styled-components";
 
 import useEnsafe from "~hooks/useEnsafe";
 import { checkIsBoolean } from "~utils/booleans";
-import { STATUS } from "~utils/enums";
+import { enClassname } from "~utils/DOM";
+import { Size, Status } from "~utils/enums";
 
-// types
 type InputValueType = string | number | boolean;
-
 type InputProps = {
   className?: string;
   isAsync?: boolean;
   onChange: (value: InputValueType) => void;
   placeholder?: string;
-  status?: STATUS;
-  type?: string;
+  status?: Status;
+  type?: HTMLInputTypeAttribute;
   value?: InputValueType;
-  width?: string;
+  size?: Size;
 };
 
 /**
  * StyledInput
- * @component
+ * @styled-component
  */
 const StyledInput = styled.input`
   background-color: var(--color-light);
@@ -59,17 +58,29 @@ const StyledInput = styled.input`
     transition: none;
     width: 100%;
   }
+  &.xs {
+    width: 3em;
+  }
+  &.sm {
+    width: 8em;
+  }
+  &.md {
+    width: 12em;
+  }
+  &.lg {
+    width: 20em;
+  }
+  &.xl {
+    width: 32em;
+  }
 `;
 
 /**
  * Input
  * @component
- *
- * @desc ::
- *      We can set isAsync at true to improve performance when we want to
- *      execute an heavy task on each value update
- *
- *
+ * @description
+ * We can set isAsync at true to improve performance when we want to
+ * execute an heavy task on each value update
  */
 function Input(props: InputProps) {
   const {
@@ -77,10 +88,10 @@ function Input(props: InputProps) {
     isAsync,
     onChange,
     placeholder,
+    size = Size.md,
     status,
     type = "text",
     value,
-    width = "18em",
   } = props;
 
   const { ensafe } = useEnsafe();
@@ -94,23 +105,22 @@ function Input(props: InputProps) {
     if (!isAsync) ensafe(() => onChange(eventAdapter(event)));
   };
 
-  const handleblur = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (isAsync) ensafe(() => onChange(eventAdapter(event)));
   };
 
   const style = status ? {} : {};
-
+  const classed = enClassname([size], className);
   return (
     <StyledInput
       style={style}
-      className={className}
+      className={classed}
       checked={checkIsBoolean(value) ? value : undefined}
-      onBlur={handleblur}
+      onBlur={handleBlur}
       onChange={handleChange}
       placeholder={placeholder}
       type={type}
       value={checkIsBoolean(value) ? undefined : value}
-      width={width}
     />
   );
 }

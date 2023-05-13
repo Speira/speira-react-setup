@@ -9,12 +9,13 @@ type KeysToLitteral = {
 };
 
 /**
- * keysToLitterals
- *
+ * keysToString
  * @description
- *  Transform an array of object to a string.
- *  Only the non null keys are returned
- *
+ * Transform Object keys to string
+ * @Example
+ *  const object = { header: true, blue: true, warning: false };
+ *  const result = keysToString(object);
+ *  console.log(result); // "header blue"
  */
 export function keysToString(obj: AnyObject, options?: KeysToLitteral) {
   return Object.keys(obj)
@@ -33,13 +34,16 @@ export function keysToString(obj: AnyObject, options?: KeysToLitteral) {
 /**
  * checkIsKeyof
  * @typeGard
- *
  * @description
- * Verify if a key is in an object for typescript
- *
- *
+ * Verify if a key is in an object so that typescript associates the keyof attribute
+ * @example
+ * checkIsKeyof({key: 1}, 'key') // true
+ * checkIsKeyof({key: 1}, 'other') // false
  */
-export function checkIsKeyof<T>(obj: T, key: PropertyKey): key is keyof T {
+export function checkIsKeyof<T = object>(
+  obj: T,
+  key: PropertyKey
+): key is keyof T {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 

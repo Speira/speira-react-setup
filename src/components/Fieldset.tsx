@@ -12,8 +12,7 @@ type FieldsetProps = DefaultProps & {
 
 /**
  * StyledFieldset
- * @component
- *
+ * @styled-component
  */
 const StyledFieldset = styled.fieldset`
   border-color: var(--bg-text-color);
@@ -46,7 +45,6 @@ const StyledFieldset = styled.fieldset`
 /**
  * Fieldset
  * @component
- *
  */
 function Fieldset(props: FieldsetProps) {
   const {
