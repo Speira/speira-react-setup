@@ -11,10 +11,14 @@ import { TableActionType, TableSettingType } from "~utils/tables";
 
 type TableContainerProps<T> = {
   actions?: TableActionType<T>[];
-  children: (Row: FunctionComponent<{ item: T }>) => ReactElement[];
-  display?: (item: T, key: keyof T) => ReactNode;
-  settings: TableSettingType<T>[];
-  sizes?: { row: Size; actions: Size };
+  children: (
+    Row: FunctionComponent<{
+      item: T;
+      display: (item: T, key: keyof T) => ReactNode;
+    }>
+  ) => ReactElement[];
+  keys: TableSettingType<T>[];
+  sizes?: { rowY: Size; actionsX: Size };
 };
 
 /**
@@ -24,14 +28,14 @@ type TableContainerProps<T> = {
  * Container for displaying Table
  */
 function TableContainer<T extends object>(props: TableContainerProps<T>) {
-  const { actions, children, display = displayValue, sizes, settings } = props;
+  const { actions, children, sizes, keys } = props;
   const tableRef = React.useRef(null);
   const { scrollTop } = useScroll({ ref: tableRef });
   const isScrolling = scrollTop > 50;
   return (
     <Table ref={tableRef}>
       <TableRow isHead isScrolling={isScrolling}>
-        {settings.map(({ label, xSize }) => (
+        {keys.map(({ label, xSize }) => (
           <TableRowItem size={xSize} isHead center>
             {label}
           </TableRowItem>
@@ -42,15 +46,15 @@ function TableContainer<T extends object>(props: TableContainerProps<T>) {
           </TableRowItem>
         )}
       </TableRow>
-      {children(({ item }) => (
-        <TableRow size={sizes?.row}>
-          {settings.map(({ key, xSize }) => (
+      {children(({ item, display = displayValue }) => (
+        <TableRow size={sizes?.rowY}>
+          {keys.map(({ key, xSize }) => (
             <TableRowItem size={xSize} center>
               {display(item, key)}
             </TableRowItem>
           ))}
           {actions && (
-            <TableRowItem size={sizes?.actions} center>
+            <TableRowItem size={sizes?.actionsX} center>
               {actions.map(({ click, label, status }) => (
                 <Button status={status} onClick={() => click(item)}>
                   {label}

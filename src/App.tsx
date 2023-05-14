@@ -24,6 +24,11 @@ const tableContents = [
 
 type ItemType = (typeof tableContents)[number];
 
+/**
+ * App
+ * @description
+ * Entry point
+ */
 function App() {
   const onDelete = () => {};
 
@@ -39,17 +44,18 @@ function App() {
       <Card />
       <Input onChange={() => null} />
       <TableContainer<ItemType>
-        sizes={{ row: Size.md, actions: Size.md }}
         actions={[{ label: "Delete", click: onDelete, status: Status.danger }]}
-        display={display}
-        settings={[
+        sizes={{ rowY: Size.md, actionsX: Size.md }}
+        keys={[
           { key: "id", label: "ID", xSize: Size.xs },
           { key: "description", label: "Description", xSize: Size.xl },
           { key: "area", label: "Area" },
           { key: "address", label: "Adress", xSize: Size.lg },
         ]}
       >
-        {(Row) => tableContents.map((item) => <Row item={item} />)}
+        {(Row) =>
+          tableContents.map((item) => <Row item={item} display={display} />)
+        }
       </TableContainer>
     </Contexts>
   );
