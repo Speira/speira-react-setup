@@ -9,6 +9,9 @@ A bash script will be added soon. The script will be able to boostrap an already
 ### Test
 Test are going to be pushed.
 
+### Style guides
+A styleguidist setup will be pushed
+
 ## Available scripts
 
 ### `yarn start`
