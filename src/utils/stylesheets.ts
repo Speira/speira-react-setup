@@ -61,14 +61,17 @@ export function objectToCSS(
   responsiveEntity: ResponsiveStyles,
   size: keyof ResponsiveCSSObject
 ) {
-  return css`
-    ${Object.entries(responsiveEntity).reduce(
+  const style = Object.entries(responsiveEntity)
+    .reduce(
       (acc, [key, responsiveCSS]) =>
         responsiveCSS[size]
-          ? acc.concat(`${key}: ${responsiveCSS[size] as string};`)
-          : "",
+          ? acc.concat(`${key}: ${responsiveCSS[size] as string}; `)
+          : acc,
       ""
-    )}
+    )
+    .trim();
+  return css`
+    ${style}
   `;
 }
 

@@ -15,11 +15,11 @@ function App() {
   return (
     <Contexts>
       <GlobalStyle />
+      <LayoutModule.Header>Header description</LayoutModule.Header>
       <LayoutModule>
-        <LayoutModule.Header>Header description</LayoutModule.Header>
         <HomeModule />
-        <LayoutModule.Footer>Footer description</LayoutModule.Footer>
       </LayoutModule>
+      <LayoutModule.Footer>Footer description</LayoutModule.Footer>
     </Contexts>
   );
 }

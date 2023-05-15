@@ -3,13 +3,17 @@
 Welcome to the Speira React Setup. A clean architecture example using Typescript and Styled-Components, with an Eslint/Prettier optimized configuration.
 
 ## Todo
+
 ### Bash Script
+
 A bash script will be added soon. The script will be able to boostrap an already set project.
 
 ### Test
+
 Test are going to be pushed.
 
 ### Style guides
+
 A styleguidist setup will be pushed
 
 ## Available scripts
@@ -37,3 +41,19 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+## Updated package.json
+
+### Add jest resolver
+
+Add a jest config resolver in the package.json
+
+```json
+  "jest": {
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "^~(.+)Module(.*)$": "<rootDir>/src/modules/$1Module$2",
+      "^~(.+)$": "<rootDir>/src/$1"
+    }
+  }
+```

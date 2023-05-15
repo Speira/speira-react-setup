@@ -14,16 +14,3 @@ export function enClassname(props: string[], className?: string) {
     .join(" ")
     .trim();
 }
-
-/* ****************************************************************** */
-
-/**
- * checkIsRef
- * @typeGuard
- * @description
- */
-export function checkIsRef(
-  ref: HTMLElement | RefObject<HTMLElement>
-): ref is RefObject<HTMLElement> {
-  return "current" in ref;
-}

@@ -60,7 +60,7 @@ export function displayValue(item: object, key: string) {
     if (["string", "number"].includes(typeof value)) {
       return value;
     }
-    if (typeof value === "boolean") return value ? "1" : "0";
+    if (typeof value === "boolean") return value ? "Yes" : "No";
   }
   return "";
 }

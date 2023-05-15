@@ -36,7 +36,7 @@ function TableContainer<T extends object>(props: TableContainerProps<T>) {
     <Table ref={tableRef}>
       <TableRow isHead isScrolling={isScrolling}>
         {keys.map(({ label, xSize }) => (
-          <TableRowItem size={xSize} isHead center>
+          <TableRowItem key={label} size={xSize} isHead center>
             {label}
           </TableRowItem>
         ))}
@@ -49,14 +49,14 @@ function TableContainer<T extends object>(props: TableContainerProps<T>) {
       {children(({ item, display = displayValue }) => (
         <TableRow size={sizes?.rowY}>
           {keys.map(({ key, xSize }) => (
-            <TableRowItem size={xSize} center>
+            <TableRowItem key={key} size={xSize} center>
               {display(item, key)}
             </TableRowItem>
           ))}
           {actions && (
             <TableRowItem size={sizes?.actionsX} center>
               {actions.map(({ click, label, status }) => (
-                <Button status={status} onClick={() => click(item)}>
+                <Button key={label} status={status} onClick={() => click(item)}>
                   {label}
                 </Button>
               ))}

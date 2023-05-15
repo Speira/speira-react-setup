@@ -53,7 +53,9 @@ function HomeModule() {
         ]}
       >
         {(Row) =>
-          tableContents.map((item) => <Row item={item} display={display} />)
+          tableContents.map((item) => (
+            <Row key={item.id} item={item} display={display} />
+          ))
         }
       </TableContainer>
     </Flex>

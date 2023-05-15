@@ -5,7 +5,7 @@
   "scripts": {
     "start": "yarn clean-cache && yarn lint && craco start",
     "build": "craco build",
-    "test": "craco test",
+    "test": "craco test ",
     "clean-cache": "rimraf -rf ./node_modules/.cache",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
@@ -64,5 +64,11 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^~(.+)Module(.*)$": "<rootDir>/src/modules/$1Module$2",
+      "^~(.+)$": "<rootDir>/src/$1"
+    }
   }
 }

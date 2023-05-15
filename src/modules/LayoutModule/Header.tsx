@@ -12,7 +12,7 @@ import layoutCSS from "./layoutCSS";
 function Header(props: DefaultProps) {
   const { children } = props;
   return (
-    <Flex as="head" css={layoutCSS.header}>
+    <Flex as="header" css={layoutCSS.header}>
       <Flex css={layoutCSS.headerTop}>
         <Flex>Brand</Flex>
         <Flex as="nav" css={layoutCSS.headerNav}>
