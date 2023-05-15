@@ -65,7 +65,6 @@ export enum ThemeKeys {
  * initThene()
  * @description
  * Init the theme
- *
  */
 export function initTheme(nextKey?: ThemeKeys): ThemeInterface {
   const themeStorageID = "themeStorageID";

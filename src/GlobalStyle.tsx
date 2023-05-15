@@ -51,10 +51,10 @@ export default createGlobalStyle`
 
     --radius: ${({ theme }) => theme.radius};
 
-    /* * dynamic vars * */
+    /* Dynamic vars used to be adapted according to bg-[value] of the parent element */
     --bg-text-color: var(--color-dark);
     --bg-color: var(--color-primary);
-
+  }
 
   /* ****************************************************** */
   /* *********************  BG color  ********************* */
@@ -91,5 +91,11 @@ export default createGlobalStyle`
     --bg-text-color: var(--color-dark);
   }
 
-  }
+  /* ****************************************************** */
+  /* *********************  text-align  ******************* */
+  /* ****************************************************** */
+
+  .text-center { text-align: center;}
+  .text-right { text-align: right;}
+  .text-left { text-align: left;}
 `;

@@ -1,6 +1,6 @@
 import { AnyObject } from "./types";
 
-// **************************************************************************
+/* ************************************************************************** */
 
 type KeysToLitteral = {
   prefix?: string;
@@ -29,7 +29,7 @@ export function keysToString(obj: AnyObject, options?: KeysToLitteral) {
     .trim();
 }
 
-// **************************************************************************
+/* ************************************************************************** */
 
 /**
  * checkIsKeyof
@@ -47,4 +47,20 @@ export function checkIsKeyof<T = object>(
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
-// **************************************************************************
+/* ************************************************************************** */
+
+/**
+ * displayValue
+ * @description
+ * Main display value function for table
+ */
+export function displayValue(item: object, key: string) {
+  if (checkIsKeyof(item, key)) {
+    const value = item[key];
+    if (["string", "number"].includes(typeof value)) {
+      return value;
+    }
+    if (typeof value === "boolean") return value ? "1" : "0";
+  }
+  return "";
+}
