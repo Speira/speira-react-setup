@@ -82,7 +82,8 @@ function Button(props: ButtonProps) {
   const { children, className, onClick } = props;
   const { ensafe } = useEnsafe();
   const handleClick = () => {
-    ensafe(() => onClick());
+    const safeClick = ensafe(() => onClick());
+    safeClick();
   };
 
   return (

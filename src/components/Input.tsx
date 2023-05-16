@@ -95,6 +95,7 @@ function Input(props: InputProps) {
   } = props;
 
   const { ensafe } = useEnsafe();
+  const safeChange = ensafe((input) => onChange(input as InputValueType));
 
   const eventAdapter = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.type === "checkbox") return event.target.checked;
@@ -102,11 +103,11 @@ function Input(props: InputProps) {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isAsync) ensafe(() => onChange(eventAdapter(event)));
+    if (!isAsync) safeChange(eventAdapter(event));
   };
 
   const handleBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (isAsync) ensafe(() => onChange(eventAdapter(event)));
+    if (isAsync) safeChange(eventAdapter(event));
   };
 
   const style = status ? {} : {};

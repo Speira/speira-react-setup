@@ -12,7 +12,7 @@ function useEnsafe() {
     (fn: FunctionType<unknown, unknown>) =>
     (...params: unknown[]) => {
       try {
-        fn(params);
+        fn(...params);
       } catch (error: unknown) {
         setServerError(
           "An unexpected problem occured, please contact the developper"

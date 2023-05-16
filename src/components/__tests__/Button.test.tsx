@@ -11,5 +11,4 @@ test("render Button", () => {
   expect(onClick).not.toHaveBeenCalled();
   fireEvent.click(button);
   expect(onClick).toHaveBeenCalled();
-  cleanup();
 });

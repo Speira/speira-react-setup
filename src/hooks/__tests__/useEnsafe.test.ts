@@ -15,9 +15,10 @@ test("useEnsafe", () => {
     }),
   };
   const { result: ensafeHook } = renderHook(useEnsafe);
+  const { ensafe } = ensafeHook.current;
 
   act(() => {
-    const handler = ensafeHook.current.ensafe(callbacks.default);
+    const handler = ensafe(callbacks.default);
     expect(callbacks.default).not.toHaveBeenCalled();
     handler();
     expect(callbacks.default).toHaveBeenCalled();
@@ -25,7 +26,7 @@ test("useEnsafe", () => {
   });
 
   act(() => {
-    const faillingHandler = ensafeHook.current.ensafe(callbacks.widhtError);
+    const faillingHandler = ensafe(callbacks.widhtError);
     expect(callbacks.widhtError).not.toHaveBeenCalled();
     faillingHandler();
     expect(callbacks.widhtError).toHaveBeenCalled();
