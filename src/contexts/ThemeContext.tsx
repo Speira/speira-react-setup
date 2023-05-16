@@ -45,6 +45,6 @@ export default ThemeProvider;
 
 export const useTheme = () => {
   const context = React.useContext(SCThemeContext);
-  if (!context) throw new Error("ThemeContext must be called in ThemeProvider");
+  if (!context) throw new Error("useTheme must be called inside ThemeProvider");
   return context;
 };

@@ -17,3 +17,7 @@ function Contexts(props: DefaultProps) {
 }
 
 export default Contexts;
+
+export const withContext = (component: JSX.Element) => (
+  <Contexts>{component}</Contexts>
+);

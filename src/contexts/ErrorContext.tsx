@@ -1,6 +1,5 @@
 import React from "react";
 
-import { getErrorsTypes } from "~utils/errors";
 import { DefaultProps } from "~utils/types";
 
 export interface ErrorInterface {
@@ -10,7 +9,7 @@ export interface ErrorInterface {
   isClientError: boolean;
   isNotFoundError: boolean;
   isServerError: boolean;
-  resetError: (message: string) => void;
+  resetError: () => void;
   setClientError: (message: string) => void;
   setDeniedError: (message: string) => void;
   setNotFountError: (message: string) => void;
@@ -28,15 +27,14 @@ function ErrorProvider(props: DefaultProps) {
   const [errorType, setErrorType] =
     React.useState<ErrorInterface["errorType"]>();
   const [errorMessage, setErrorMessage] = React.useState("");
-  const errorsTypes = getErrorsTypes();
   const value = React.useMemo(
     () => ({
       errorMessage,
       errorType,
       hasError: !!errorType,
-      isClientError: errorType === errorsTypes.client,
-      isNotFoundError: errorType === errorsTypes.notFound,
-      isServerError: errorType === errorsTypes.server,
+      isClientError: errorType === "client",
+      isNotFoundError: errorType === "notFound",
+      isServerError: errorType === "server",
       resetError() {
         setErrorType(undefined);
         setErrorMessage("");
@@ -58,7 +56,7 @@ function ErrorProvider(props: DefaultProps) {
         setErrorMessage(message);
       },
     }),
-    [errorType, errorMessage, errorsTypes]
+    [errorType, errorMessage]
   );
 
   return (
@@ -70,6 +68,6 @@ export default ErrorProvider;
 
 export const useError = () => {
   const context = React.useContext(ErrorContext);
-  if (!context) throw new Error("ErrorContext must be called in ErrorProvider");
+  if (!context) throw new Error("useError must be called inside ErrorProvider");
   return context;
 };

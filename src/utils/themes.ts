@@ -31,7 +31,7 @@ export interface ThemeInterface {
  * The default style theme, implement DefaultTheme
  * @see src/styled.d.ts for the interface definition
  */
-function getDefaultTheme(): ThemeInterface {
+export function getDefaultTheme(): ThemeInterface {
   return {
     colors: {
       primary: "#174f69",

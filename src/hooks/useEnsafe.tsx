@@ -9,7 +9,7 @@ import { FunctionType } from "~utils/types";
 function useEnsafe() {
   const { setServerError } = useError();
   const ensafe =
-    (fn: FunctionType<unknown, void>) =>
+    (fn: FunctionType<unknown, unknown>) =>
     (...params: unknown[]) => {
       try {
         fn(params);
