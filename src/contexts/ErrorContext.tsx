@@ -18,6 +18,7 @@ export interface ErrorInterface {
 
 const ErrorContext = React.createContext<ErrorInterface | null>(null);
 
+/** createError */
 export function createError(param: Partial<ErrorInterface>): ErrorInterface {
   const fn = () => {};
   return {

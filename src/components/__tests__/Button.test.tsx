@@ -1,11 +1,9 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-
 import Button from "~components/Button";
-import { withContext } from "~contexts";
+import { fireEvent, render, screen } from "~utils/testUtils";
 
 test("render Button", () => {
   const onClick = jest.fn();
-  render(withContext(<Button onClick={onClick}>Test Button</Button>));
+  render(<Button onClick={onClick}>Test Button</Button>);
   const button = screen.getByText("Test Button");
   expect(button).toBeInTheDocument();
   expect(onClick).not.toHaveBeenCalled();

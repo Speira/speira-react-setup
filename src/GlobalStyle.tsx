@@ -32,11 +32,6 @@ export default createGlobalStyle`
   /* ******************************************************************* */
 
   :root{
-    --screen-sm: 600px;
-    --screen-md: 768px;
-    --screen-lg: 992px;
-    --screen-xl: 1200px;
-
     --color-primary: ${({ theme }) => theme.colors.primary};
     --color-secondary: ${({ theme }) => theme.colors.secondary};
     --color-tertiary: ${({ theme }) => theme.colors.tertiary};
@@ -55,11 +50,15 @@ export default createGlobalStyle`
     --color-light-danger: ${({ theme }) => theme.colors.light_danger};
 
     --radius: ${({ theme }) => theme.radius};
+  }
 
-    /* Dynamic vars used to be adapted according to bg-[value] of the parent element */
+
+  /* ****************************************************** */
+  /* *******************  Dynamic vars  ******************* */
+  /* ****************************************************** */
+
     --bg-text-color: var(--color-dark);
     --bg-color: var(--color-primary);
-  }
 
   /* ****************************************************** */
   /* *********************  BG color  ********************* */

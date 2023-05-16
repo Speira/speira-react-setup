@@ -70,6 +70,7 @@ export function initTheme(nextKey?: ThemeKeys): ThemeInterface {
   const themeStorageID = "themeStorageID";
   const themes = {
     [ThemeKeys.defaultTheme]: getDefaultTheme,
+    // Add new theme here
   };
   if (nextKey) {
     const ChoosenTheme = themes[nextKey];

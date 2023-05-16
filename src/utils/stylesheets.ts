@@ -1,5 +1,4 @@
 import { CSSProperties } from "react";
-import { css } from "styled-components";
 
 import { ValueOf } from "./types";
 
@@ -33,7 +32,7 @@ type ResponsiveCSSObject = {
 
 /**
  * @note
- * Don't forget the mandatory "value" key
+ * Do not forget the mandatory "value" key
  * @example
  * {
  *   width: {
@@ -51,11 +50,11 @@ export type ResponsiveStyles = Partial<
  * Take a record to turn it into a CSS property
  * @example
  * const test  = {
- *   width: {value: '15em', xl:'25em'},
- *   height: {value '2em', md:'3em'},
+ *   width: {value: "15em", xl:"25em"},
+ *   height: {value "2em", md:"3em"},
  * }
- * # objectToCSS(test, 'md') = "height: 2em;"
- * # objectToCSS(test, 'value') = "width: 15em; height: 2em;"
+ * # objectToCSS(test, "md") = "height: 2em;"
+ * # objectToCSS(test, "value") = "width: 15em; height: 2em;"
  */
 export function objectToCSS(
   responsiveEntity: ResponsiveStyles,
@@ -70,9 +69,7 @@ export function objectToCSS(
       ""
     )
     .trim();
-  return css`
-    ${style}
-  `;
+  return style;
 }
 
 /* ****************************************************************** */

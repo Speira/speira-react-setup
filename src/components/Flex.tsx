@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css as c, styled } from "styled-components";
 
 import { devices, objectToCSS, ResponsiveStyles } from "~utils/stylesheets";
 import { DefaultProps } from "~utils/types";
@@ -8,7 +8,8 @@ type FlexType = DefaultProps & {
   css?: ResponsiveStyles;
 };
 
-type StyledFlexType = FlexType & Required<Pick<FlexType, "css">>;
+type StyledFlexType = Pick<FlexType, "as"> &
+  Record<"base" | "sm" | "md" | "lg" | "xl", string>;
 
 /**
  * @styled-components
@@ -33,18 +34,30 @@ type StyledFlexType = FlexType & Required<Pick<FlexType, "css">>;
  * */
 const StyledFlex = styled.div<StyledFlexType>`
   display: flex;
-  ${({ css }) => objectToCSS(css, "value")}
+  ${({ base }) => base}
   @media ${devices.sm} {
-    ${({ css }) => objectToCSS(css, "sm")}
+    ${({ sm }) =>
+      c`
+        ${sm}
+      `}
   }
   @media ${devices.md} {
-    ${({ css }) => objectToCSS(css, "md")}
+    ${({ md }) =>
+      c`
+        ${md}
+      `}
   }
   @media ${devices.lg} {
-    ${({ css }) => objectToCSS(css, "lg")}
+    ${({ lg }) =>
+      c`
+        ${lg}
+      `}
   }
   @media ${devices.xl} {
-    ${({ css }) => objectToCSS(css, "xl")}
+    ${({ xl }) =>
+      c`
+        ${xl}
+      `}
   }
 `;
 
@@ -52,24 +65,39 @@ const StyledFlex = styled.div<StyledFlexType>`
  * Flex
  * @component
  * @description
- * Simple and fast implementation of a FlexBox
+ * Simple and fast implementation of a Flexible component
  * @example
  *   <Flex
  *      as="section"
  *      css={{
- *        width: {value: '40px', lg: '50px'},
- *        height: {value: '3em', sm:'4em'},
- *        fontSize: {value: '2em'},
+ *        fontSize: { value: "2em" },
+ *        height: { value: "3em", sm:"4em" },
+ *        width: { value: "40px", lg: "50px" },
  *      }
  *   />
  */
 function Flex(props: FlexType) {
-  const { as = "div", children, className, css } = props;
+  const { as = "div", children, className, css, testId } = props;
 
   const cssResult = !css ? {} : css;
 
+  const base = objectToCSS(cssResult, "value");
+  const sm = objectToCSS(cssResult, "sm");
+  const md = objectToCSS(cssResult, "md");
+  const lg = objectToCSS(cssResult, "lg");
+  const xl = objectToCSS(cssResult, "xl");
+
   return (
-    <StyledFlex as={as} className={className} css={cssResult}>
+    <StyledFlex
+      data-testid={testId}
+      as={as}
+      base={base}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xl={xl}
+      className={className}
+    >
       {children}
     </StyledFlex>
   );

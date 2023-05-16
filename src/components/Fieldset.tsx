@@ -5,7 +5,7 @@ import { enClassname } from "~utils/DOM";
 import { DefaultProps } from "~utils/types";
 
 type FieldsetProps = DefaultProps & {
-  legend: string;
+  legend?: string;
   position?: "left" | "right" | "center";
   direction?: "row" | "column";
 };
@@ -21,13 +21,13 @@ const StyledFieldset = styled.fieldset`
   max-width: 50em;
   padding: 0.7em;
   width: 100%;
-  &.left legend {
+  &.left .legend {
     text-align: left;
   }
-  &.center legend {
+  &.center .legend {
     text-align: center;
   }
-  &.right legend {
+  &.right .legend {
     text-align: right;
   }
   &.row .fieldset-content {
@@ -59,7 +59,7 @@ function Fieldset(props: FieldsetProps) {
 
   return (
     <StyledFieldset className={propsClass}>
-      {legend && <legend>{legend}</legend>}
+      {legend && <legend className="legend">{legend}</legend>}
       <div className="fieldset-content">{children}</div>
     </StyledFieldset>
   );
