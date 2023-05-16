@@ -1,30 +1,34 @@
-import { useError } from "~contexts/ErrorContext";
+import * as errorContext from "~contexts/ErrorContext";
 import useEnsafe from "~hooks/useEnsafe";
 import { act, renderHook } from "~utils/testUtils";
 
-test("useEnsafe", async () => {
-  const actionFn = jest.fn();
-  const throwFn: jest.Mock<unknown> = jest
-    .fn()
-    .mockRejectedValue("Async error message");
+test("useEnsafe", () => {
+  const setServerError = jest.fn();
+  jest
+    .spyOn(errorContext, "useError")
+    .mockReturnValue(errorContext.createError({ setServerError }));
+
+  const callbacks = {
+    default: jest.fn(),
+    widhtError: jest.fn().mockImplementation(() => {
+      throw new Error("callback failed");
+    }),
+  };
   const { result: ensafeHook } = renderHook(useEnsafe);
-  const { result: errorHook } = renderHook(useError);
 
-  const action = ensafeHook.current.ensafe(actionFn);
-  expect(actionFn).not.toHaveBeenCalled();
-  action();
-  expect(actionFn).toHaveBeenCalled();
-  expect(throwFn).not.toHaveBeenCalled();
-
-  const thrown = ensafeHook.current.ensafe(() => {
-    throwFn();
+  act(() => {
+    const handler = ensafeHook.current.ensafe(callbacks.default);
+    expect(callbacks.default).not.toHaveBeenCalled();
+    handler();
+    expect(callbacks.default).toHaveBeenCalled();
+    expect(setServerError).not.toHaveBeenCalled();
   });
 
-  expect(errorHook.current).toEqual(
-    expect.objectContaining({ errorMessage: "", hasError: false })
-  );
-  await thrown();
-  expect(errorHook.current).toEqual(
-    expect.objectContaining({ errorMessage: "ensafe error", hasError: true })
-  );
+  act(() => {
+    const faillingHandler = ensafeHook.current.ensafe(callbacks.widhtError);
+    expect(callbacks.widhtError).not.toHaveBeenCalled();
+    faillingHandler();
+    expect(callbacks.widhtError).toHaveBeenCalled();
+    expect(setServerError).toHaveBeenCalled();
+  });
 });
