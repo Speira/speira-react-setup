@@ -11,9 +11,6 @@ export default createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  body * {
-    box-sizing: border-box;
     min-height: 100vh;
     width: 100%;
     max-width: 100%;
@@ -21,6 +18,14 @@ export default createGlobalStyle`
     flex-direction:column;
   }
 
+  body, #root {
+    display: flex;
+    flex-direction:column;
+  }
+
+  body * {
+    box-sizing: border-box;
+  }
   a:visited {
     text-decoration: none;
   }

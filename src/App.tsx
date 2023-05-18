@@ -1,8 +1,8 @@
 import React from "react";
 
 import Contexts from "~contexts";
-import HomeModule from "~HomeModule";
-import LayoutModule from "~LayoutModule";
+import HomeModule from "~modules/HomeModule";
+import LayoutModule from "~modules/LayoutModule";
 
 import GlobalStyle from "./GlobalStyle";
 

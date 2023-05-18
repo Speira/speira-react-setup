@@ -1,64 +1,19 @@
-import { css as c, styled } from "styled-components";
+import React from "react";
+import styled from "styled-components/macro";
 
-import { devices, objectToCSS, ResponsiveStyles } from "~utils/stylesheets";
+import { devices, SizeableCSSProp } from "~utils/stylesheets";
 import { DefaultProps } from "~utils/types";
 
 type FlexType = DefaultProps & {
   as?: keyof typeof styled;
-  css?: ResponsiveStyles;
+  cssProp?: SizeableCSSProp;
 };
 
-type StyledFlexType = Pick<FlexType, "as"> &
-  Record<"base" | "sm" | "md" | "lg" | "xl", string>;
+type StyledFlexType = Pick<FlexType, "as">;
 
-/**
- * @styled-components
- * @example
- * const test = {
- *    width: {value: "15em", md:"20em", xl:"35em"},
- *    height: {value: "5em", xl: "20em"}
- * };
- *
- * # return (<StyledFlex css={test} />) will give the following css:
- *   width: 15em;
- *   height: 5em;
- *   media (min-width: 600px){}
- *   media (min-width: 768px){
- *     width: 20em;
- *   }
- *   media (min-width: 1024px){}
- *   media (min-width: 1200px){
- *     width: 35em;
- *     height: 20em;
- *   }
- * */
+/** @styled-components */
 const StyledFlex = styled.div<StyledFlexType>`
   display: flex;
-  ${({ base }) => base}
-  @media ${devices.sm} {
-    ${({ sm }) =>
-      c`
-        ${sm}
-      `}
-  }
-  @media ${devices.md} {
-    ${({ md }) =>
-      c`
-        ${md}
-      `}
-  }
-  @media ${devices.lg} {
-    ${({ lg }) =>
-      c`
-        ${lg}
-      `}
-  }
-  @media ${devices.xl} {
-    ${({ xl }) =>
-      c`
-        ${xl}
-      `}
-  }
 `;
 
 /**
@@ -69,33 +24,37 @@ const StyledFlex = styled.div<StyledFlexType>`
  * @example
  *   <Flex
  *      as="section"
- *      css={{
- *        fontSize: { value: "2em" },
- *        height: { value: "3em", sm:"4em" },
- *        width: { value: "40px", lg: "50px" },
+ *      cssProp={{
+ *        fontSize: "2em",
+ *        height: "3em",,
+ *        width: "40px"
+ *        lg: {
+ *          // lg designates the behavior when the screen is large
+ *          width: "60px",
+ *          fontSize: "2.5em"
+ *        }
  *      }
  *   />
  */
 function Flex(props: FlexType) {
-  const { as = "div", children, className, css, testId } = props;
+  const { as, children, className, cssProp, testId } = props;
 
-  const cssResult = !css ? {} : css;
+  const cssResult = !cssProp ? {} : cssProp;
 
-  const base = objectToCSS(cssResult, "value");
-  const sm = objectToCSS(cssResult, "sm");
-  const md = objectToCSS(cssResult, "md");
-  const lg = objectToCSS(cssResult, "lg");
-  const xl = objectToCSS(cssResult, "xl");
+  const { xs, sm, md, lg, xl, ...defaultCSS } = cssResult;
 
   return (
     <StyledFlex
       data-testid={testId}
+      css={{
+        ...defaultCSS,
+        [devices.xs]: xs,
+        [devices.sm]: sm,
+        [devices.md]: md,
+        [devices.lg]: lg,
+        [devices.xl]: xl,
+      }}
       as={as}
-      base={base}
-      sm={sm}
-      md={md}
-      lg={lg}
-      xl={xl}
       className={className}
     >
       {children}

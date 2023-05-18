@@ -15,7 +15,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "transform": "typescript-plugin-styled-components",
+        "type": "config",
+        "fileName": true,
+        "displayName": false
+      }
+    ]
   },
   "include": ["src", ".eslintrc.json"],
   "exclude": ["node_modules", "build", "src/**/*.test.[j|t]sx?"]

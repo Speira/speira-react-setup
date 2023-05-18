@@ -8,7 +8,7 @@ module.exports = {
       "~contexts": path.resolve(__dirname, "src/contexts"),
       "~hooks": path.resolve(__dirname, "src/hooks"),
       "~utils": path.resolve(__dirname, "src/utils"),
-      "~": path.resolve(__dirname, "src/modules"),
+      "~modules": path.resolve(__dirname, "src/modules"),
     },
   },
 };

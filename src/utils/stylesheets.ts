@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 
+import { Size } from "./enums";
 import { ValueOf } from "./types";
 
 /* ****************************************************************** */
@@ -11,11 +12,12 @@ import { ValueOf } from "./types";
  * @example
  * "@media ${devices.sm}{}"
  */
-export const devices = {
-  sm: "(min-width: 600px)",
-  md: "(min-width: 768px)",
-  lg: "(min-width: 1024px)",
-  xl: "(min-width: 1200px)",
+export const devices: Record<Size, string> = {
+  xs: "@media (min-width: 480px)",
+  sm: "@media (min-width: 600px)",
+  md: "@media (min-width: 768px)",
+  lg: "@media (min-width: 1024px)",
+  xl: "@media (min-width: 1366px)",
 };
 
 /* ****************************************************************** */
@@ -71,16 +73,21 @@ export function objectToCSS(
     .trim();
   return style;
 }
+/* ****************************************************************** */
+
+type SizedCSSProperties = Partial<Record<Size, CSSProperties>>;
+export type SizeableCSSProp = CSSProperties & SizedCSSProperties;
+export type CSSPropAdapted = Record<string, SizeableCSSProp>;
 
 /* ****************************************************************** */
 
-export const basicsStyles: Record<string, ResponsiveStyles> = {
+export const basicsStyles: Record<string, CSSProperties> = {
   flexCenter: {
-    display: { value: "flex" },
-    placeContent: { value: "center center" },
+    display: "flex",
+    placeContent: "center center",
   },
   flexSpaceAround: {
-    display: { value: "flex" },
-    placeContent: { value: "center space-around" },
+    display: "flex",
+    placeContent: "center space-around",
   },
 };

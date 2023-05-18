@@ -1,3 +1,5 @@
+import {} from "styled-components/cssprop";
+
 import "styled-components";
 
 declare module "styled-components" {
