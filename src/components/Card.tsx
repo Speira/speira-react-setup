@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
 
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
 /**
  * StyledCard

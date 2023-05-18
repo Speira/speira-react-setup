@@ -2,8 +2,8 @@ import React from "react";
 import { styled } from "styled-components";
 
 import useEnsafe from "~hooks/useEnsafe";
-import { Status } from "~utils/enums";
-import { DefaultProps } from "~utils/types";
+import { Status } from "~utils/enum.utils";
+import { DefaultProps } from "~utils/type.utils";
 
 type ButtonProps = DefaultProps & {
   onClick: () => void;

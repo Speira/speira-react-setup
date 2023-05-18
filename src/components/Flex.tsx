@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { devices, SizeableCSSProp } from "~utils/stylesheets";
-import { DefaultProps } from "~utils/types";
+import { devices, SizeableCSSProp } from "~utils/css.utils";
+import { DefaultProps } from "~utils/type.utils";
 
 type FlexType = DefaultProps & {
   as?: keyof typeof styled;

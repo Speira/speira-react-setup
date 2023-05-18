@@ -1,4 +1,4 @@
-import { Size, Status } from "./enums";
+import { Size, Status } from "./enum.utils";
 
 export type TableActionType<T> = {
   label: string;

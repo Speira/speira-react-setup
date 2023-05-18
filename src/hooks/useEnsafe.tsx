@@ -1,5 +1,5 @@
 import { useError } from "~contexts/ErrorContext";
-import { FunctionType } from "~utils/types";
+import { FunctionType } from "~utils/type.utils";
 
 /**
  * useEnsafe

@@ -1,4 +1,4 @@
-import { enClassname } from "~utils/DOM";
+import { enClassname } from "~utils/dom.utils";
 
 test("enClassname()", () => {
   const properties = ["warning", "rounded", "md"];

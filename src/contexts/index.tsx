@@ -1,4 +1,4 @@
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
 import ErrorProvider from "./ErrorContext";
 import ThemeProvider from "./ThemeContext";

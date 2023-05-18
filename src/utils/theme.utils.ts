@@ -1,4 +1,4 @@
-import { checkIsKeyof } from "./objects";
+import { checkIsKeyof } from "./object.utils";
 
 export interface ThemeInterface {
   colors: {

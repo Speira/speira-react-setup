@@ -1,4 +1,4 @@
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
 import Body from "./Body";
 import Footer from "./Footer";

@@ -2,19 +2,18 @@ import React, { HTMLInputTypeAttribute } from "react";
 import { styled } from "styled-components";
 
 import useEnsafe from "~hooks/useEnsafe";
-import { checkIsBoolean } from "~utils/booleans";
-import { enClassname } from "~utils/DOM";
-import { Size, Status } from "~utils/enums";
+import { enClassname } from "~utils/dom.utils";
+import { Size, Status } from "~utils/enum.utils";
+import { checkIsBoolean, Primitive } from "~utils/primitive.utils";
 
-type InputValueType = string | number | boolean;
 type InputProps = {
   className?: string;
   isAsync?: boolean;
-  onChange: (value: InputValueType) => void;
+  onChange: (value: Primitive) => void;
   placeholder?: string;
   status?: Status;
   type?: HTMLInputTypeAttribute;
-  value?: InputValueType;
+  value?: Primitive;
   size?: Size;
 };
 
@@ -95,7 +94,7 @@ function Input(props: InputProps) {
   } = props;
 
   const { ensafe } = useEnsafe();
-  const safeChange = ensafe((input) => onChange(input as InputValueType));
+  const safeChange = ensafe((input) => onChange(input as Primitive));
 
   const eventAdapter = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.type === "checkbox") return event.target.checked;

@@ -1,9 +1,9 @@
 import React from "react";
 import { styled } from "styled-components";
 
-import { enClassname } from "~utils/DOM";
-import { keysToString } from "~utils/objects";
-import { DefaultProps } from "~utils/types";
+import { enClassname } from "~utils/dom.utils";
+import { keysToString } from "~utils/object.utils";
+import { DefaultProps } from "~utils/type.utils";
 
 type ImageProps = DefaultProps & {
   width?: string;

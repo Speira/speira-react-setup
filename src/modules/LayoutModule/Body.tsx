@@ -1,7 +1,7 @@
 import Flex from "~components/Flex";
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
-import CSSLayout from "./CSSLayout";
+import layoutCSS from "./layout.css";
 
 /**
  * Body
@@ -11,7 +11,7 @@ import CSSLayout from "./CSSLayout";
  */
 function Body(props: DefaultProps) {
   const { children } = props;
-  return <Flex cssProp={CSSLayout.container}>{children}</Flex>;
+  return <Flex cssProp={layoutCSS.container}>{children}</Flex>;
 }
 
 export default Body;

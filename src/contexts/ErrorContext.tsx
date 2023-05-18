@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
 export interface ErrorInterface {
   errorMessage?: string;

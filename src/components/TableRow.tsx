@@ -1,10 +1,10 @@
 import React from "react";
 import { styled } from "styled-components";
 
-import { enClassname } from "~utils/DOM";
-import { Size } from "~utils/enums";
-import { keysToString } from "~utils/objects";
-import { DefaultProps } from "~utils/types";
+import { enClassname } from "~utils/dom.utils";
+import { Size } from "~utils/enum.utils";
+import { keysToString } from "~utils/object.utils";
+import { DefaultProps } from "~utils/type.utils";
 
 type TableRowtype = DefaultProps & {
   isHead?: boolean;

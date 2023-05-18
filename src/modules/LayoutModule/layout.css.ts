@@ -1,6 +1,6 @@
-import { basicsStyles, CSSPropAdapted } from "~utils/stylesheets";
+import { basicsStyles, CSSPropAdapted } from "~utils/css.utils";
 
-const CSSLayout: CSSPropAdapted = {
+const layoutCSS: CSSPropAdapted = {
   container: {
     display: "flex",
     width: "100vw",
@@ -27,4 +27,4 @@ const CSSLayout: CSSPropAdapted = {
   },
 };
 
-export default CSSLayout;
+export default layoutCSS;

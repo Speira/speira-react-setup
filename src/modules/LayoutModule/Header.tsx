@@ -1,7 +1,7 @@
 import Flex from "~components/Flex";
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
-import CSSLayout from "./CSSLayout";
+import layoutCSS from "./layout.css";
 
 /**
  * Header
@@ -12,10 +12,10 @@ import CSSLayout from "./CSSLayout";
 function Header(props: DefaultProps) {
   const { children } = props;
   return (
-    <Flex as="header" cssProp={CSSLayout.header}>
-      <Flex cssProp={CSSLayout.headerTop}>
+    <Flex as="header" cssProp={layoutCSS.header}>
+      <Flex cssProp={layoutCSS.headerTop}>
         <Flex>Brand</Flex>
-        <Flex as="nav" cssProp={CSSLayout.headerNav}>
+        <Flex as="nav" cssProp={layoutCSS.headerNav}>
           Nav
         </Flex>
         <Flex>Utils</Flex>

@@ -5,9 +5,9 @@ import Card from "~components/Card";
 import Flex from "~components/Flex";
 import Input from "~components/Input";
 import TableContainer from "~containers/TableContainer";
-import { Size, Status } from "~utils/enums";
+import { Size, Status } from "~utils/enum.utils";
 
-import CSSHome from "./CSSHome";
+import homeCSS from "./home.css";
 
 const tableContents = [
   {
@@ -38,7 +38,7 @@ function HomeModule() {
     return item[key];
   };
   return (
-    <Flex as="section" cssProp={CSSHome.container}>
+    <Flex as="section" cssProp={homeCSS.container}>
       <Button onClick={() => null}>Button</Button>
       <Card />
       <Input onChange={() => null} />

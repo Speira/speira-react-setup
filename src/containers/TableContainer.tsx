@@ -5,9 +5,9 @@ import Table from "~components/Table";
 import TableRow from "~components/TableRow";
 import TableRowItem from "~components/TableRowItem";
 import useScroll from "~hooks/useScroll";
-import { Size } from "~utils/enums";
-import { displayValue } from "~utils/objects";
-import { TableActionType, TableSettingType } from "~utils/tables";
+import { Size } from "~utils/enum.utils";
+import { displayValue } from "~utils/object.utils";
+import { TableActionType, TableSettingType } from "~utils/table.utils";
 
 type TableContainerProps<T> = {
   actions?: TableActionType<T>[];

@@ -1,8 +1,8 @@
 import React from "react";
 import { styled } from "styled-components";
 
-import { enClassname } from "~utils/DOM";
-import { DefaultProps } from "~utils/types";
+import { enClassname } from "~utils/dom.utils";
+import { DefaultProps } from "~utils/type.utils";
 
 type FieldsetProps = DefaultProps & {
   legend?: string;

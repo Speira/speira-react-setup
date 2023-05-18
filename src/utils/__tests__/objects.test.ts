@@ -1,4 +1,4 @@
-import { checkIsKeyof, displayValue, keysToString } from "~utils/objects";
+import { checkIsKeyof, displayValue, keysToString } from "~utils/object.utils";
 
 test("keysToString", () => {
   const param = { key1: "test", key2: false, key3: true };

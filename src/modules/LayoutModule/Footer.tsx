@@ -1,7 +1,7 @@
 import Flex from "~components/Flex";
-import { DefaultProps } from "~utils/types";
+import { DefaultProps } from "~utils/type.utils";
 
-import CSSLayout from "./CSSLayout";
+import layoutCSS from "./layout.css";
 
 /**
  * Footer
@@ -12,7 +12,7 @@ import CSSLayout from "./CSSLayout";
 function Footer(props: DefaultProps) {
   const { children } = props;
   return (
-    <Flex as="footer" cssProp={CSSLayout.footer}>
+    <Flex as="footer" cssProp={layoutCSS.footer}>
       {children}
     </Flex>
   );

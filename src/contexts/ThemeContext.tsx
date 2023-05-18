@@ -5,8 +5,8 @@ import {
   ThemeProvider as SCThemeProvider,
 } from "styled-components";
 
-import { initTheme } from "~utils/themes";
-import { DefaultProps } from "~utils/types";
+import { initTheme } from "~utils/theme.utils";
+import { DefaultProps } from "~utils/type.utils";
 
 export type ThemeContextInterface = {
   colors: DefaultTheme["colors"];
