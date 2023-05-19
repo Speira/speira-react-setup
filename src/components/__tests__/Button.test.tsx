@@ -1,5 +1,5 @@
 import Button from "~components/Button";
-import { fireEvent, render, screen } from "~utils/testUtils";
+import { fireEvent, render, screen } from "~utils/test.utils";
 
 test("render Button", () => {
   const onClick = jest.fn();

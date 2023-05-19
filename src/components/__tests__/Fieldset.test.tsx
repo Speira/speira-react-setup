@@ -1,5 +1,5 @@
 import Fieldset from "~components/Fieldset";
-import { render, screen } from "~utils/testUtils";
+import { render, screen } from "~utils/test.utils";
 
 test("Fieldset", () => {
   const { rerender } = render(<Fieldset>Test fieldset</Fieldset>);

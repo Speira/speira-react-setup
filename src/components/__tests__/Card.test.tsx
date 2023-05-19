@@ -1,5 +1,5 @@
 import Card from "~components/Card";
-import { render, screen } from "~utils/testUtils";
+import { render, screen } from "~utils/test.utils";
 
 test("Card", () => {
   render(<Card>Test Card</Card>);

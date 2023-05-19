@@ -1,5 +1,5 @@
 import Flex from "~components/Flex";
-import { render, screen } from "~utils/testUtils";
+import { render, screen } from "~utils/test.utils";
 
 test("Flex", () => {
   const { rerender } = render(<Flex testId="Test Flex">Test Flex</Flex>);

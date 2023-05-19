@@ -1,5 +1,5 @@
 import { ErrorInterface, useError } from "~contexts/ErrorContext";
-import { act, renderHook } from "~utils/testUtils";
+import { act, renderHook } from "~utils/test.utils";
 
 test("ErrorContext", () => {
   const { result } = renderHook<ErrorInterface>(useError);

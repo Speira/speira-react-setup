@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-import { render, screen } from "~utils/testUtils";
-import * as themeUtils from "~utils/themes";
+import { render, screen } from "~utils/test.utils";
+import * as themeUtils from "~utils/theme.utils";
 
 test("ThemeContext", () => {
   const defaultTheme = themeUtils.getDefaultTheme();

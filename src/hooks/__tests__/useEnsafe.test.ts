@@ -1,6 +1,6 @@
 import * as errorContext from "~contexts/ErrorContext";
 import useEnsafe from "~hooks/useEnsafe";
-import { act, renderHook } from "~utils/testUtils";
+import { act, renderHook } from "~utils/test.utils";
 
 test("useEnsafe", () => {
   const setServerError = jest.fn();

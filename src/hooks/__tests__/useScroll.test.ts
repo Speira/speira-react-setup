@@ -1,7 +1,7 @@
 import { RefObject } from "react";
 
 import useScroll from "~hooks/useScroll";
-import { fireEvent, renderHook } from "~utils/testUtils";
+import { fireEvent, renderHook } from "~utils/test.utils";
 
 test("useScroll", () => {
   const htmlElement = document.createElement("div");
