@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 
 import { Size } from "./enum.utils";
+import { ValueOf } from "./type.utils";
 
 /* ****************************************************************** */
 
@@ -24,6 +25,25 @@ export const devices: Record<Size, string> = {
 type SizedCSSProperties = Partial<Record<Size, CSSProperties>>;
 export type SizeableCSSProp = CSSProperties & SizedCSSProperties;
 export type CSSPropAdapted = Record<string, SizeableCSSProp>;
+
+type MediaCSS = Partial<Record<ValueOf<typeof devices>, CSSProperties>>;
+
+/**
+ * extractMediaQueries
+ * @description
+ * extract the media queries props and turn them into CSS props
+ */
+export function extractMediaQueries(cssProp: SizedCSSProperties): MediaCSS {
+  const { xs, sm, md, lg, xl } = cssProp;
+
+  return Object.entries({ xs, sm, md, lg, xl }).reduce(
+    (acc, [itemKey, itemCSS]) => {
+      if (!itemCSS) return acc;
+      return { ...acc, [devices[itemKey as Size]]: itemCSS };
+    },
+    {}
+  );
+}
 
 /* ****************************************************************** */
 

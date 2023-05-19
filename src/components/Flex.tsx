@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { devices, SizeableCSSProp } from "~utils/css.utils";
+import { extractMediaQueries, SizeableCSSProp } from "~utils/css.utils";
 import { DefaultProps } from "~utils/type.utils";
 
 type FlexType = DefaultProps & {
@@ -38,21 +38,18 @@ const StyledFlex = styled.div<StyledFlexType>`
  */
 function Flex(props: FlexType) {
   const { as, children, className, cssProp, testId } = props;
-
   const cssResult = !cssProp ? {} : cssProp;
 
   const { xs, sm, md, lg, xl, ...defaultCSS } = cssResult;
+
+  const mediasQueries = extractMediaQueries({ xs, sm, md, lg, xl });
 
   return (
     <StyledFlex
       data-testid={testId}
       css={{
         ...defaultCSS,
-        [devices.xs]: xs,
-        [devices.sm]: sm,
-        [devices.md]: md,
-        [devices.lg]: lg,
-        [devices.xl]: xl,
+        ...mediasQueries,
       }}
       as={as}
       className={className}
