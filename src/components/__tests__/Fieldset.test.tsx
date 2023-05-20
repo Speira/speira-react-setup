@@ -8,7 +8,7 @@ test("Fieldset", () => {
   expect(fieldset).toBeInTheDocument();
 
   expect(fieldset).toHaveClass("fieldset-content");
-  expect(fieldset.parentNode).toHaveClass(".left", ".column");
+  expect(fieldset.parentNode).toHaveClass("left", "column");
   expect(fieldset.parentNode?.firstChild).toHaveClass("fieldset-content");
 
   rerender(<Fieldset legend="legend">Test fieldset</Fieldset>);
@@ -20,5 +20,5 @@ test("Fieldset", () => {
     </Fieldset>
   );
   expect(screen.getByText("TestLegend")).toBeInTheDocument();
-  expect(fieldset.parentNode).toHaveClass(".right", ".column");
+  expect(fieldset.parentNode).toHaveClass("right", "column");
 });

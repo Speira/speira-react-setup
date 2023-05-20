@@ -20,6 +20,7 @@ const StyledButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.radius};
   box-shadow: ${({ theme }) => theme.boxShadowize.low("var(--color-dark)")};
+  color: var(--bg-text-color);
   cursor: pointer;
   font-size: 1em;
   margin: 0.5em;
@@ -95,14 +96,21 @@ const StyledButton = styled.button`
  * @component
  */
 function Button(props: ButtonProps) {
-  const { children, className, id, onClick, size = Size.md } = props;
+  const {
+    children,
+    className,
+    id,
+    onClick,
+    size = Size.md,
+    status = Status.info,
+  } = props;
   const { ensafe } = useEnsafe();
   const handleClick = () => {
     const safeClick = ensafe(() => onClick());
     safeClick();
   };
 
-  const classed = enClassname([size], className);
+  const classed = enClassname([size], className).concat(` bg-light-${status}`);
 
   return (
     <StyledButton

@@ -34,12 +34,12 @@ const StyledTableRow = styled.div<StyledType>`
     max-height: 3.5em;
   }
   &.head.scrolling {
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.light};
     box-shadow: ${({ theme }) => theme.boxShadowize.hight(theme.colors.dark)};
     cursor: default;
     opacity: 0.95;
     position: sticky;
-    top: o;
+    top: 0;
   }
   &.xs {
     height: 2em;

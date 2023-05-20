@@ -101,11 +101,46 @@ export default createGlobalStyle`
     --bg-text-color: var(--color-dark);
   }
 
-  /* ****************************************************** */
-  /* *********************  text-align  ******************* */
-  /* ****************************************************** */
+  .bg-info {
+    background-color: var(--color-info);
+    --bg-color: var(--color-info);
+    --bg-text-color: var(--color-light);
+  }
+  .bg-success {
+    background-color: var(--color-success);
+    --bg-color: var(--color-success);
+    --bg-text-color: var(--color-light);
+  }
+  .bg-warning {
+    background-color: var(--color-warning);
+    --bg-color: var(--color-warning);
+    --bg-text-color: var(--color-light);
+  }
+  .bg-danger {
+    background-color: var(--color-danger);
+    --bg-color: var(--color-danger);
+    --bg-text-color: var(--color-light);
+  }
 
-  .text-center { text-align: center;}
-  .text-right { text-align: right;}
-  .text-left { text-align: left;}
+  .bg-light-info {
+    background-color: var(--color-light-info);
+    --bg-color: var(--color-light-info);
+    --bg-text-color: var(--color-info);
+  }
+  .bg-light-success {
+    background-color: var(--color-light-success);
+    --bg-color: var(--color-light-success);
+    --bg-text-color: var(--color-success);
+  }
+  .bg-light-warning {
+    background-color: var(--color-light-warning);
+    --bg-color: var(--color-light-warning);
+    --bg-text-color: var(--color-warning);
+  }
+  .bg-light-danger {
+    background-color: var(--color-light-danger);
+    --bg-color: var(--color-light-danger);
+    --bg-text-color: var(--color-danger);
+  }
+
 `;

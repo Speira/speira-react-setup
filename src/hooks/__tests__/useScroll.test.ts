@@ -10,10 +10,10 @@ test("useScroll", () => {
     current: htmlElement,
   };
 
-  const { result } = renderHook(() => useScroll({ ref }));
-  expect(result.current.scrollTop).toEqual(0);
+  const { result } = renderHook(() => useScroll({ ref, trigger: 50 }));
+  expect(result.current.isScrolling).toBeFalsy();
   fireEvent.scroll(ref.current as Element, {
     target: { scrollTop: 700 },
   });
-  expect(result.current.scrollTop).toEqual(700);
+  expect(result.current.isScrolling).toBeTruthy();
 });

@@ -20,6 +20,11 @@ const tableContents = [
   { id: "fakeID1", description: "fakeDescription1", area: "fakeArea1" },
   { id: "fakeID2", description: "fakeDescription2", area: "fakeArea2" },
   { id: "fakeID3", description: "fakeDescription3", area: "fakeArea3" },
+  { id: "fakeID4", description: "fakeDescription4", area: "fakeArea4" },
+  { id: "fakeID5", description: "fakeDescription5", area: "fakeArea5" },
+  { id: "fakeID6", description: "fakeDescription6", area: "fakeArea6" },
+  { id: "fakeID7", description: "fakeDescription7", area: "fakeArea7" },
+  { id: "fakeID8", description: "fakeDescription8", area: "fakeArea8" },
 ];
 
 type ItemType = (typeof tableContents)[number];
@@ -47,7 +52,7 @@ function HomeModule() {
       <Input onChange={() => null} />
       <TableContainer<ItemType>
         actions={[
-          { label: "Delete", click: onDelete, status: Status.danger },
+          { label: "Delete", click: onDelete, status: Status.warning },
           { label: "See", click: see, status: Status.info },
         ]}
         sizes={{ rowY: Size.md, actionsX: Size.md }}

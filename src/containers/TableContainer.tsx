@@ -30,8 +30,7 @@ type TableContainerProps<T> = {
 function TableContainer<T extends object>(props: TableContainerProps<T>) {
   const { actions, children, sizes, keys } = props;
   const tableRef = React.useRef(null);
-  const { scrollTop } = useScroll({ ref: tableRef });
-  const isScrolling = scrollTop > 50;
+  const { isScrolling } = useScroll({ ref: tableRef, trigger: 50 });
   return (
     <Table ref={tableRef}>
       <TableRow isHead isScrolling={isScrolling}>

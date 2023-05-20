@@ -2,6 +2,7 @@ import React, { RefObject } from "react";
 
 type ScrollType = {
   ref?: RefObject<HTMLElement> | null;
+  trigger?: number;
 };
 
 /**
@@ -11,15 +12,18 @@ type ScrollType = {
  * Event handler on scroll
  */
 function useScroll(params: ScrollType) {
-  const { ref } = params;
-  const [scrollTop, setScrollTop] = React.useState(0);
+  const { ref, trigger = 50 } = params;
+  const [isScrolling, setScrollingState] = React.useState(false);
 
-  const onScroll = (e: Event) => {
-    const target = e.currentTarget as HTMLElement;
-    if (!target) return;
-    const scrollValue = target.scrollTop;
-    setScrollTop(scrollValue);
-  };
+  const onScroll = React.useCallback(
+    (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
+      if (!target) return;
+      const scrollValue = target.scrollTop;
+      setScrollingState(scrollValue > trigger);
+    },
+    [trigger]
+  );
 
   React.useEffect(() => {
     let current: HTMLElement | null;
@@ -31,8 +35,8 @@ function useScroll(params: ScrollType) {
     return () => {
       if (current) current.removeEventListener("scroll", onScroll);
     };
-  }, [ref]);
+  }, [ref, onScroll]);
 
-  return { scrollTop };
+  return { isScrolling };
 }
 export default useScroll;
