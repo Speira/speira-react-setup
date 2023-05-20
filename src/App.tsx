@@ -4,7 +4,7 @@ import Contexts from "~contexts";
 import HomeModule from "~modules/HomeModule";
 import LayoutModule from "~modules/LayoutModule";
 
-import GlobalStyle from "./GlobalStyle";
+import AppCSS from "./App.css";
 
 /**
  * App
@@ -14,9 +14,9 @@ import GlobalStyle from "./GlobalStyle";
 function App() {
   return (
     <Contexts>
-      <GlobalStyle />
-      <LayoutModule.Header>Header description</LayoutModule.Header>
+      <AppCSS />
       <LayoutModule>
+        <LayoutModule.Header>Header description</LayoutModule.Header>
         <HomeModule />
       </LayoutModule>
       <LayoutModule.Footer>Footer description</LayoutModule.Footer>

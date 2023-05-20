@@ -32,23 +32,29 @@ type ItemType = (typeof tableContents)[number];
  */
 function HomeModule() {
   const onDelete = () => {};
+  const see = () => {};
+
   const display = (item: ItemType, key: keyof ItemType) => {
     const value = item[key];
     if ((key = "description")) return value?.slice(0, 20) || "";
     return item[key];
   };
+
   return (
     <Flex as="section" cssProp={homeCSS.container}>
       <Button onClick={() => null}>Button</Button>
       <Card />
       <Input onChange={() => null} />
       <TableContainer<ItemType>
-        actions={[{ label: "Delete", click: onDelete, status: Status.danger }]}
+        actions={[
+          { label: "Delete", click: onDelete, status: Status.danger },
+          { label: "See", click: see, status: Status.info },
+        ]}
         sizes={{ rowY: Size.md, actionsX: Size.md }}
         keys={[
           { key: "id", label: "ID", xSize: Size.xs },
           { key: "description", label: "Description", xSize: Size.xl },
-          { key: "area", label: "Area" },
+          { key: "area", label: "Area", xSize: Size.sm },
           { key: "address", label: "Adress", xSize: Size.lg },
         ]}
       >

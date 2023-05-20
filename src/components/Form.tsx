@@ -47,9 +47,13 @@ const StyledForm = styled.form`
  * @component
  */
 function Form(props: FormProps) {
-  const { children, className, size = Size.md } = props;
+  const { children, className, id, size = Size.md } = props;
   const classed = enClassname([size], className);
-  return <StyledForm className={classed}>{children}</StyledForm>;
+  return (
+    <StyledForm id={id} className={classed}>
+      {children}
+    </StyledForm>
+  );
 }
 
 export default Form;

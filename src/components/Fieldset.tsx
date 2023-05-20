@@ -50,6 +50,7 @@ function Fieldset(props: FieldsetProps) {
   const {
     children,
     className,
+    id,
     legend,
     position = "left",
     direction = "column",
@@ -58,7 +59,7 @@ function Fieldset(props: FieldsetProps) {
   const propsClass = enClassname([position, direction], className);
 
   return (
-    <StyledFieldset className={propsClass}>
+    <StyledFieldset id={id} className={propsClass}>
       {legend && <legend className="legend">{legend}</legend>}
       <div className="fieldset-content">{children}</div>
     </StyledFieldset>

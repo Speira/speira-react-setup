@@ -37,7 +37,7 @@ const StyledFlex = styled.div<StyledFlexType>`
  *   />
  */
 function Flex(props: FlexType) {
-  const { as, children, className, cssProp, testId } = props;
+  const { as, children, className, cssProp, id, testId } = props;
   const cssResult = !cssProp ? {} : cssProp;
 
   const { xs, sm, md, lg, xl, ...defaultCSS } = cssResult;
@@ -46,6 +46,7 @@ function Flex(props: FlexType) {
 
   return (
     <StyledFlex
+      id={id}
       data-testid={testId}
       css={{
         ...defaultCSS,

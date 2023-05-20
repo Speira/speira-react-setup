@@ -4,28 +4,29 @@ import "normalize.css";
 
 export default createGlobalStyle`
   body {
-    font-size: 16px;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    flex-direction:column;
-  }
-
-  body, #root {
-    display: flex;
-    flex-direction:column;
   }
 
   body * {
     box-sizing: border-box;
   }
+
+  #root {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
   a:visited {
     text-decoration: none;
   }

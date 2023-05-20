@@ -1,25 +1,29 @@
 import { basicsStyles, CSSPropAdapted } from "~utils/css.utils";
 
 const layoutCSS: CSSPropAdapted = {
-  container: {
+  body: {
     display: "flex",
-    width: "100vw",
+    maxWidth: "100vw",
+    flexDirection: "column",
+    alignItems: "center",
+    alignContent: "center",
   },
   footer: {
     ...basicsStyles.flexSpaceAround,
   },
   header: {
     display: "flex",
-    margin: "auto",
+    margin: "0 auto",
     flexDirection: "column",
     width: "100%",
     md: {
       width: "90%",
+      maxWidth: "80em",
     },
   },
   headerTop: {
     display: "grid",
-    gridTemplateColumns: "3em 1frem",
+    gridTemplateColumns: "3em 1fr 3em",
     width: "100%",
   },
   headerNav: {

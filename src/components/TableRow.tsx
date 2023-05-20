@@ -42,19 +42,19 @@ const StyledTableRow = styled.div<StyledType>`
     top: o;
   }
   &.xs {
-    height: 1.5em;
-  }
-  &.sm {
     height: 2em;
   }
+  &.sm {
+    height: 3em;
+  }
   &.md {
-    height: 3.5em;
+    height: 4em;
   }
   &.lg {
     height: 7em;
   }
   &.xl {
-    height: 16em;
+    height: 10em;
   }
 `;
 
@@ -73,10 +73,10 @@ function TableRow(props: TableRowtype) {
     isScrolling = false,
   } = props;
 
-  const classed = enClassname(
-    keysToString({ head: isHead, scrolling: isScrolling, size }).split(""),
-    className
+  const keys = keysToString({ head: isHead, scrolling: isScrolling }).split(
+    " "
   );
+  const classed = enClassname([...keys, size], className);
 
   return <StyledTableRow className={classed}>{children}</StyledTableRow>;
 }

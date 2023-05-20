@@ -2,12 +2,14 @@ import React from "react";
 import { styled } from "styled-components";
 
 import useEnsafe from "~hooks/useEnsafe";
-import { Status } from "~utils/enum.utils";
+import { enClassname } from "~utils/dom.utils";
+import { Size, Status } from "~utils/enum.utils";
 import { DefaultProps } from "~utils/type.utils";
 
 type ButtonProps = DefaultProps & {
   onClick: () => void;
   status?: Status;
+  size?: Size;
 };
 
 /**
@@ -17,8 +19,7 @@ type ButtonProps = DefaultProps & {
 const StyledButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.radius};
-  box-shadow: 1px 1px 1px -1px var(--color-dark),
-    -0.5px -0.5px 0.5px 0px var(--color-dark) inset;
+  box-shadow: ${({ theme }) => theme.boxShadowize.low("var(--color-dark)")};
   cursor: pointer;
   font-size: 1em;
   margin: 0.5em;
@@ -72,6 +73,21 @@ const StyledButton = styled.button`
     border: none;
     box-shadow: none;
   }
+  &.xs {
+    width: 2em;
+  }
+  &.sm {
+    width: 4em;
+  }
+  &.md {
+    width: 8em;
+  }
+  &.lg {
+    width: 14em;
+  }
+  &.xl {
+    width: 18em;
+  }
 `;
 
 /**
@@ -79,15 +95,22 @@ const StyledButton = styled.button`
  * @component
  */
 function Button(props: ButtonProps) {
-  const { children, className, onClick } = props;
+  const { children, className, id, onClick, size = Size.md } = props;
   const { ensafe } = useEnsafe();
   const handleClick = () => {
     const safeClick = ensafe(() => onClick());
     safeClick();
   };
 
+  const classed = enClassname([size], className);
+
   return (
-    <StyledButton className={className} onClick={handleClick} role="button">
+    <StyledButton
+      id={id}
+      className={classed}
+      onClick={handleClick}
+      role="button"
+    >
       {children}
     </StyledButton>
   );

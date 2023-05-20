@@ -1,15 +1,15 @@
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { CSSProperties, ForwardedRef, forwardRef } from "react";
 import { styled } from "styled-components";
 
 import { DefaultProps } from "~utils/type.utils";
 
-type TableProps = DefaultProps;
+type TableProps = DefaultProps & { maxHeight?: CSSProperties["maxHeight"] };
 
 /**
  * StyledTable
  * @component
  */
-const StyledTable = styled.div`
+const StyledTable = styled.div<TableProps>`
   border: 1px solid var(--bg-color);
   border-radius: 4px;
   box-shadow: 0 0 2px -1px var(--bg-text-color) inset;
@@ -30,9 +30,13 @@ const StyledTable = styled.div`
  * @see See src/components/TableRowItem
  */
 function Table(props: TableProps, ref?: ForwardedRef<HTMLDivElement>) {
-  const { children } = props;
+  const { children, maxHeight = "20em" } = props;
 
-  return <StyledTable ref={ref}>{children}</StyledTable>;
+  return (
+    <StyledTable ref={ref} style={{ maxHeight }}>
+      {children}
+    </StyledTable>
+  );
 }
 
 export default forwardRef(Table);

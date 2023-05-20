@@ -41,7 +41,7 @@ function TableContainer<T extends object>(props: TableContainerProps<T>) {
           </TableRowItem>
         ))}
         {actions && (
-          <TableRowItem size={Size.lg} isHead center>
+          <TableRowItem size={sizes?.actionsX} isHead center>
             Actions
           </TableRowItem>
         )}
@@ -56,7 +56,12 @@ function TableContainer<T extends object>(props: TableContainerProps<T>) {
           {actions && (
             <TableRowItem size={sizes?.actionsX} center>
               {actions.map(({ click, label, status }) => (
-                <Button key={label} status={status} onClick={() => click(item)}>
+                <Button
+                  key={label}
+                  status={status}
+                  size={Size.sm}
+                  onClick={() => click(item)}
+                >
                   {label}
                 </Button>
               ))}

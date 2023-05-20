@@ -22,35 +22,37 @@ const BaseTableRowItem = styled.div`
   align-items: center;
   box-shadow: -1px 0 4px -2px ${({ theme }) => theme.colors.primary};
   display: flex;
+  height: 100%;
   justify-content: flex-start;
   min-width: 3em;
   overflow-x: auto;
   padding: 4px;
+  text-overflow: ellipsis;
   &.head {
-    cursor: pointer;
+    cursor: text;
     font-weight: bold;
     justify-content: center;
   }
   &.center {
     justify-content: center;
   }
-  &:first-child {
-    border-left: none;
-  }
   &.xs {
-    width: 6em;
+    width: 4em;
   }
   &.sm {
-    width: 12em;
+    width: 8em;
   }
   &.md {
-    width: 18em;
+    width: 12em;
   }
   &.lg {
-    width: 24em;
+    width: 18em;
   }
   &.xl {
-    width: 32em;
+    width: 24em;
+  }
+  &:first-child {
+    border-left: none;
   }
 `;
 
@@ -72,7 +74,7 @@ function TableRowItem(props: TableRowItemType) {
   const { ensafe } = useEnsafe();
 
   const classed = enClassname(
-    keysToString({ head: isHead, center }).split("".concat(size)),
+    keysToString({ head: isHead, center }).split(" ").concat(size),
     className
   );
 

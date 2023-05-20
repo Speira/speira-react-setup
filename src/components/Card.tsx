@@ -22,8 +22,12 @@ const StyledCard = styled.div`
  * @component
  */
 function Card(props: DefaultProps) {
-  const { children, className } = props;
-  return <StyledCard className={className}>{children}</StyledCard>;
+  const { children, className, id } = props;
+  return (
+    <StyledCard id={id} className={className}>
+      {children}
+    </StyledCard>
+  );
 }
 
 export default Card;

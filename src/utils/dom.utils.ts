@@ -8,7 +8,7 @@
 export function enClassname(props: string[], className?: string) {
   const base = className || "";
   return [base]
-    .concat(props.map((value) => `.${value}`))
+    .concat(props.map((value) => (value ? `${value}` : "")))
     .join(" ")
     .trim();
 }

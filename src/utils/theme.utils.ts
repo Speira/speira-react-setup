@@ -51,7 +51,7 @@ export function getDefaultTheme(): ThemeInterface {
     },
     radius: "4px",
     boxShadowize: {
-      low: (color: string) => `0px 0px 1px -1px ${color}`,
+      low: (color: string) => `0px 0px 2px 0px ${color}`,
       hight: (color: string) => `1px 1px 2px -1px ${color}`,
     },
   };
